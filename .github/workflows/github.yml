@@ -13,12 +13,9 @@ jobs:
     - name: Checkout do código
       uses: actions/checkout@v3
     
-    - name: Atualizar site (com limpeza forçada)
+    - name: Atualizar site
       run: |
         cd /var/www/html
-        sudo git fetch --all
-        sudo git reset --hard origin/main
-        sudo git clean -fd
+        sudo git pull origin main
         sudo systemctl restart nginx
         echo "Deploy realizado com sucesso em $(date)"
-
